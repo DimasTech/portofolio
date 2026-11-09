@@ -1,0 +1,302 @@
+<!doctype html><html><head><meta charset=utf8><meta name=viewport content="width=device-width,initial-scale=1,viewport-fit=cover"><style>:root{color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}html{scroll-padding-top:env(safe-area-inset-top,0px)}body{margin:0;padding:0;font:14px -apple-system,BlinkMacSystemFont,sans-serif;background:#fff;color:#000}img{max-width:100%}[hidden]:not([hidden=until-found i]){display:none!important}</style></head><body>
+<title>DimTech Portfolio</title>
+<meta name="viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Semi+Condensed:wght@500;600;700&family=DM+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  /* Layout: satu kolom sempit, header tipis dengan tiga menu, konten ditampilkan per halaman (Home, About, Community). */
+  :root {
+    --bg: #0d1117;
+    --surface: #151b24;
+    --line: #232c38;
+    --fg: #e6eaf0;
+    --muted: #8d99a8;
+    --accent: #8fb0d1;
+    --accent-ink: #0d1117;
+    --font-display: "Barlow Semi Condensed", "Arial Narrow", system-ui, sans-serif;
+    --font-body: "DM Sans", system-ui, -apple-system, "Segoe UI", sans-serif;
+    color-scheme: dark;
+  }
+  @media (prefers-color-scheme: light) {
+    :root:not([data-theme="dark"]) {
+      --bg: #f4f6f9;
+      --surface: #ffffff;
+      --line: #dbe1e9;
+      --fg: #161c24;
+      --muted: #5c6877;
+      --accent: #2f5d8a;
+      --accent-ink: #ffffff;
+      color-scheme: light;
+    }
+  }
+  :root[data-theme="light"] {
+    --bg: #f4f6f9;
+    --surface: #ffffff;
+    --line: #dbe1e9;
+    --fg: #161c24;
+    --muted: #5c6877;
+    --accent: #2f5d8a;
+    --accent-ink: #ffffff;
+    color-scheme: light;
+  }
+
+  * { box-sizing: border-box; }
+  body {
+    background: var(--bg);
+    color: var(--fg);
+    font: 400 16px/1.65 var(--font-body);
+    -webkit-font-smoothing: antialiased;
+  }
+  body::before {
+    content: "";
+    position: fixed;
+    inset: 0 0 auto;
+    height: env(safe-area-inset-top, 0px);
+    background: var(--bg);
+    z-index: 10;
+  }
+  a { color: inherit; }
+  :focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; border-radius: 4px; }
+
+  .wrap {
+    max-width: 44rem;
+    margin-inline: auto;
+    padding-left: max(16px, env(safe-area-inset-left, 0px));
+    padding-right: max(16px, env(safe-area-inset-right, 0px));
+  }
+
+  /* Header */
+  .top {
+    position: sticky;
+    top: env(safe-area-inset-top, 0px);
+    z-index: 5;
+    background: var(--bg);
+    border-bottom: 1px solid var(--line);
+  }
+  .top .wrap {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+    min-height: 56px;
+    flex-wrap: wrap;
+  }
+  .brand {
+    font: 700 1.3rem/1 var(--font-display);
+    letter-spacing: 0.01em;
+    text-decoration: none;
+  }
+  nav { display: flex; gap: 4px; }
+  nav a {
+    font-size: 0.9rem;
+    font-weight: 500;
+    color: var(--muted);
+    text-decoration: none;
+    padding: 8px 12px;
+    border-radius: 6px;
+  }
+  nav a:hover { color: var(--fg); }
+  nav a[aria-current="page"] { color: var(--fg); background: var(--surface); }
+
+  /* Content */
+  main { padding-block: 56px 72px; }
+  section { display: flex; flex-direction: column; gap: 28px; }
+  .eyebrow {
+    font: 600 0.78rem/1 var(--font-body);
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--accent);
+  }
+  h1, h2 {
+    font-family: var(--font-display);
+    font-weight: 700;
+    line-height: 1.05;
+    margin: 0;
+    text-wrap: balance;
+  }
+  h1 { font-size: clamp(3rem, 12vw, 4.75rem); }
+  h2 { font-size: clamp(2rem, 7vw, 2.75rem); }
+  h3 { font: 600 1.05rem/1.3 var(--font-body); margin: 0; }
+  p { margin: 0; max-width: 60ch; }
+  .lead { font-size: 1.15rem; color: var(--muted); }
+  .muted { color: var(--muted); }
+
+  .actions { display: flex; flex-wrap: wrap; gap: 12px; }
+  .btn {
+    display: inline-flex;
+    align-items: center;
+    min-height: 44px;
+    padding: 0 20px;
+    border-radius: 8px;
+    font-weight: 600;
+    font-size: 0.95rem;
+    text-decoration: none;
+    border: 1px solid var(--line);
+    background: var(--surface);
+  }
+  .btn:hover { border-color: var(--accent); }
+  .btn.primary { background: var(--accent); color: var(--accent-ink); border-color: var(--accent); }
+  .btn.primary:hover { filter: brightness(1.08); }
+
+  .list { display: grid; gap: 0; border-top: 1px solid var(--line); }
+  .row {
+    display: grid;
+    grid-template-columns: 9rem 1fr;
+    gap: 8px 24px;
+    padding: 16px 0;
+    border-bottom: 1px solid var(--line);
+  }
+  .row dt { color: var(--muted); font-size: 0.9rem; }
+  .row dd { margin: 0; min-width: 0; }
+  dl { margin: 0; }
+
+  .topics { display: grid; grid-template-columns: repeat(auto-fit, minmax(13rem, 1fr)); gap: 16px; }
+  .topic {
+    background: var(--surface);
+    border: 1px solid var(--line);
+    border-radius: 10px;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    min-width: 0;
+  }
+  .topic p { font-size: 0.93rem; color: var(--muted); }
+
+  .rules { margin: 0; padding: 0; list-style: none; display: grid; gap: 12px; }
+  .rules li { display: flex; gap: 12px; align-items: baseline; }
+  .rules li::before {
+    content: "";
+    flex: none;
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: var(--accent);
+    transform: translateY(-2px);
+  }
+
+  footer { border-top: 1px solid var(--line); }
+  footer .wrap { padding-block: 24px; color: var(--muted); font-size: 0.85rem; }
+
+  @media (max-width: 520px) {
+    .row { grid-template-columns: 1fr; gap: 2px; }
+    main { padding-block: 40px 56px; }
+  }
+  @media (prefers-reduced-motion: no-preference) {
+    section:not([hidden]) { animation: rise 0.35s ease both; }
+    @keyframes rise { from { opacity: 0.001; transform: translateY(6px); } to { opacity: 1; transform: none; } }
+  }
+</style>
+
+<header class="top">
+  <div class="wrap">
+    <a class="brand" href="#home">DimTech</a>
+    <nav aria-label="Menu utama">
+      <a href="#home" data-view="home">Home</a>
+      <a href="#about" data-view="about">About</a>
+      <a href="#community" data-view="community">Community</a>
+    </nav>
+  </div>
+</header>
+
+<main class="wrap">
+  <section id="view-home">
+    <span class="eyebrow">Gaming Content Creator</span>
+    <h1>DimTech</h1>
+    <p class="lead">Konten gaming yang santai dan apa adanya: gameplay, momen seru, dan tips yang bisa langsung dipakai. Semua rutin diunggah di TikTok.</p>
+    <div class="actions">
+      <a class="btn primary" data-link="tiktok" target="_blank" rel="noopener">Tonton di TikTok</a>
+      <a class="btn" href="#community">Gabung komunitas</a>
+    </div>
+
+    <div class="topics" style="margin-top: 16px;">
+      <div class="topic">
+        <h3>Gameplay</h3>
+        <p>Cuplikan permainan dari game yang sedang aku mainkan.</p>
+      </div>
+      <div class="topic">
+        <h3>Highlight</h3>
+        <p>Momen terbaik yang dipotong singkat, enak ditonton sekali duduk.</p>
+      </div>
+      <div class="topic">
+        <h3>Tips & trik</h3>
+        <p>Cara bermain lebih rapi, dari pengaturan sampai strategi dasar.</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="view-about" hidden>
+    <span class="eyebrow">Tentang</span>
+    <h2>Halo, aku Dimas.</h2>
+    <p class="lead">Halo! Saya Dimas, seorang pelajar yang memiliki ketertarikan terhadap dunia gaming dan teknologi.
+
+Bagi saya, gaming bukan hanya tentang memenangkan pertandingan, tetapi juga tentang hiburan, strategi, kreativitas, dan pengalaman baru.
+Melalui website ini, saya ingin berbagi sedikit tentang dunia gaming yang saya sukai.</p>
+    <p>Tujuanku sederhana: membuat konten gaming yang menyenangkan ditonton, tanpa gaya yang dibuat-buat. Aku masih terus belajar soal editing, ritme video, dan memilih momen yang layak dibagikan.</p>
+
+    <dl class="list">
+      <div class="row"><dt>Nama channel</dt><dd>DimTech</dd></div>
+      <div class="row"><dt>Title</dt><dd>Konten gaming</dd></div>
+      <div class="row"><dt>Platform utama</dt><dd>TikTok</dd></div>
+      <div class="row"><dt>Bahasa</dt><dd>Indonesia</dd></div>
+    </dl>
+
+    <div class="actions">
+      <a class="btn primary" data-link="tiktok" target="_blank" rel="noopener">Ikuti di TikTok</a>
+    </div>
+  </section>
+
+  <section id="view-community" hidden>
+    <span class="eyebrow">Komunitas</span>
+    <h2>Gabung Komunitas WhatsApp.</h2>
+    <p class="lead">Tempat ngobrol bareng penonton: bahas game, kasih saran konten, dan dapat kabar video terbaru lebih dulu.</p>
+
+    <div class="actions">
+      <a class="btn primary" data-link="community" target="_blank" rel="noopener">Masuk grup</a>
+    </div>
+
+    <div>
+      <h3 style="margin-bottom: 14px;">catatan singkat</h3>
+      <ul class="rules">
+        <li>komunitas ini dibuat agar nantinya sesama pengguna bisa saling berinteraksi</li>
+        <l1>pengguna juga bebas bertanya dan saling sharing baik itu ilmu maupun pengalaman</l1>
+      </ul>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap">&<span id="yr">2026</span> DimTech. Gaming content.</div>
+</footer>
+
+<script>
+  // Ganti tautan di bawah dengan alamat asli akunmu.
+  var LINKS = {
+    tiktok: "https://www.tiktok.com/@dimztech16",
+    community: "https://chat.whatsapp.com/HJ9fzOnm2ubIjRjtD0sjrA"
+  };
+
+  document.querySelectorAll("[data-link]").forEach(function (a) {
+    a.href = LINKS[a.getAttribute("data-link")] || "#";
+  });
+  document.getElementById("yr").textContent = new Date().getFullYear();
+
+  var VIEWS = ["home", "about", "community"];
+  function route() {
+    var h = (location.hash || "#home").slice(1);
+    if (VIEWS.indexOf(h) === -1) h = "home";
+    VIEWS.forEach(function (v) {
+      document.getElementById("view-" + v).hidden = v !== h;
+    });
+    document.querySelectorAll("nav a").forEach(function (a) {
+      if (a.getAttribute("data-view") === h) a.setAttribute("aria-current", "page");
+      else a.removeAttribute("aria-current");
+    });
+    window.scrollTo(0, 0);
+  }
+  window.addEventListener("hashchange", route);
+  route();
+</script>
+
+</body></html>
